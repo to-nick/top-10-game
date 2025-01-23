@@ -5,7 +5,7 @@ export default function HomeLanding(){
 
     return(
             <div className="home-container">
-                <img className='top-10-logo' src={logo} ></img>
+                <img className='top-10-logo' alt="top 10 game logo" src={logo} ></img>
                 {/* <h1 classname="home-heading">The Top 10 Game</h1> */}
                 <div className="random-list">
                     <Link to='/Players' className="home-link"><h2>Random List</h2></Link>

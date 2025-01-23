@@ -8,7 +8,7 @@ import confetti from 'canvas-confetti';
         const location = useLocation();
 
         const { players } = location.state || { players: [] };
-        const { selectedCategory } = location.state;
+        const { category } = location.state;
         const [listMetaData, setListMetaData] = useState(null);
         const [gameList, setGameList] = useState(null);
         const [playerGuess, setPlayerGuess] = useState('');
@@ -18,7 +18,7 @@ import confetti from 'canvas-confetti';
         const [hintedItems, setHintedItems] = useState([]);
         const [playerData, setPlayerData] = useState(players.map(player => ({player: player, score: 0, hints: 2})));
         const [hintsUsed, setHintsUsed] = useState(false);
-        const [category, setCategory] = useState(selectedCategory);
+        
         const [showAllItems, setShowAllItems] = useState(false);
 
 
@@ -28,6 +28,7 @@ import confetti from 'canvas-confetti';
             const backendUrl = process.env.backend_host
             try{
                 if (category){
+                    console.log(category);
                     const preData = await fetch(`${backendUrl}/lists/category-list?category=${category}`);
                     const data = await preData.json();
 

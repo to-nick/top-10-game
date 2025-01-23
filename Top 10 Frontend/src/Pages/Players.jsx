@@ -11,7 +11,6 @@ export default function Players(){
     const location = useLocation();
     const {category} = location.state || '';
     const navigate = useNavigate();
-    const [selectedCategory, setSelectedCategory] = useState(category);
     const [shake, setShake] = useState(false);
     
     const startGame = (e) => {
@@ -20,8 +19,10 @@ export default function Players(){
             setZeroPlayers(true)
             return;
         }
-        navigate('/Game', { state: { players, selectedCategory } });
+        navigate('/Game', { state: { players, category } });
     };
+
+    console.log(category);
 
     const addPlayer = (e) => {
         e.preventDefault();
