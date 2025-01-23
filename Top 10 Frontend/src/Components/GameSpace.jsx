@@ -25,9 +25,10 @@ import confetti from 'canvas-confetti';
         const [currentPlayer, setCurrentPlayer] = useState(Math.floor(Math.random() * players.length));
 
         async function fetchList(){
+            const backendUrl = process.env.backend_host
             try{
                 if (category){
-                    const preData = await fetch(`http://localhost:5010/lists/category-list?category=${category}`);
+                    const preData = await fetch(`${backendUrl}/lists/category-list?category=${category}`);
                     const data = await preData.json();
 
                     setListMetaData({

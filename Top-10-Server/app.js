@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -26,7 +27,15 @@ app.use((req, res, next) => {
   req.db = knex     
   next()
 });
-app.use(cors());
+
+const allowedOrigins = process.env.allowed_origins;
+
+const corsOptions = {
+  origin: allowedOrigins,
+  methods: ['GET', 'POST']
+};
+
+app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
