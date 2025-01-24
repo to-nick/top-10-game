@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = {
+const knexConfig = {
     client: 'mysql2',
     connection: {
       host: process.env.db_host,
@@ -13,3 +13,15 @@ module.exports = {
       }
     }
 };
+
+const knex = require('knex')(knexConfig);
+knex.raw('SELECT 1')
+  .then(() => {
+    console.log('Successfully connected to the database');
+  })
+  .catch((error) => {
+    console.error('Error connecting to the database:', error.message);
+  });
+
+
+module.exports = knexConfig;
