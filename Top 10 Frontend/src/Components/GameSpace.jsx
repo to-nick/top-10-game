@@ -238,7 +238,7 @@ import confetti from 'canvas-confetti';
                                 .join(' ')
                             return <div className='list-item-container unguessed'><li key={item}>{gameListItem}</li></div>
                         }
-                    }) : <p>Loading...</p>
+                    }) : <p>Loading....</p>
                     }
                     </ol>
                     {guessedItems.length === 10 || showAllItems === true ? <div className='end-of-game-buttons-container'><button className='play-again-button' onClick={handlePlayAgain}>Play again</button><button className='return-home-button' onClick={()=>{navigate('/')}}>Return Home</button></div> : ""}
