@@ -74,7 +74,7 @@ import confetti from 'canvas-confetti';
 
         useEffect( () => { 
             fetchList();
-        });
+        }, []);
 
         const confettiCannon = () => {
             const confettiTarget = document.querySelector(".game-list-container");
