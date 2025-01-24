@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next()
 });
 
-const allowedOrigins = process.env.allowed_origins;
+const allowedOrigins = 'https://top-10-game.vercel.app';
 
 const corsOptions = {
   origin: allowedOrigins,
