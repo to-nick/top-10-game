@@ -25,7 +25,7 @@ import confetti from 'canvas-confetti';
         const [currentPlayer, setCurrentPlayer] = useState(Math.floor(Math.random() * players.length));
 
         async function fetchList(){
-            const backendUrl = process.env.REACT_APP_backend_host
+            const backendUrl = 'https://top-10-server-production.up.railway.app';
             try{
                 if (category){
                     console.log(category);
