@@ -30,6 +30,7 @@ import confetti from 'canvas-confetti';
                 if (category){
                     console.log(category);
                     const preData = await fetch(`${backendUrl}/lists/category-list?category=${category}`);
+                    console.log('response:', preData );
                     const data = await preData.json();
 
                     setListMetaData({
