@@ -1,8 +1,18 @@
 version: '3'
 services:
+  frontend-app:
+    build:
+      context: ./Top-10-Frontend
+      dockerfile: dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
   backend-app:
     build:
       context: ./Top-10-Server
+      dockerfile: dockerfile
     ports:
       - "5010:5010"
     environment:
@@ -12,8 +22,4 @@ services:
     env_file:
       - ./Top-10-Server/.env
 
-  frontend-app:
-    build:
-      context: ./Top-10-Frontend
-    ports:
-      - "3000:3000"
+  
