@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend-app:
+    build:
+      context: ./Top-10-Server
+    ports:
+      - "5010:5010"
+    environment:
+      - PORT=5010
+    depends_on:
+      - frontend-app
+    env_file:
+      - ./Top-10-Server/.env
+
+  frontend-app:
+    build:
+      context: ./Top-10-Frontend
+    ports:
+      - "3000:3000"
