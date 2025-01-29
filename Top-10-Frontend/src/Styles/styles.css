@@ -1,0 +1,586 @@
+@keyframes shake{
+    0% { transform: translatex(0); }
+    20% { transform: translatex(-10px); }
+    40% { transform: translatex(10px); }
+    60% { transform: translatex(-10px); }
+    80% { transform: translatex(10px); }
+    100% { transform: translatex(0); }
+}
+
+.shake{
+    animation: shake 0.3s ease-in-out;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: pink;
+    height: auto;
+
+}
+
+html, body{
+
+    background-color: pink;
+    height: 100%;
+}
+
+.page-container{
+    width: 100%;
+    min-height: 85vh;
+    /* margin: 0 auto 5rem auto; */
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Navbar styles */
+
+.nav{
+    background-color: #fe9f47;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 1rem;
+    gap: 2rem;
+    height: 10vh;
+}
+
+.nav-logo{
+    /* font-size: clamp(2rem, 8vw, 3rem);
+    font-family: 'Pixelify Sans', sans-serif; */
+    width: 7rem;
+    height: auto;
+}
+
+.nav ul{
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav .nav-link, .nav-logo{
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+}
+
+.nav a:hover{
+    background-color:bisque;
+}
+
+/* FOOTER STYLES */
+
+footer{
+    background-color: #fe9f47;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 5vh;
+    bottom: 0px;
+}
+
+footer p {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;   
+}
+
+
+/* HOME PAGE STYLES */
+
+
+.home-container{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    width: 75%;
+    background-color: #55BDED;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container h1{
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 700;
+    padding-top: 1rem;
+}
+
+.top-10-logo{
+    width: 32%;
+    margin: 1rem 0;
+}
+
+.home-link{
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: 2.5vw;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease ;
+    display: inline-block;
+    padding: 1rem;
+}
+
+.home-link:hover{
+    color: black;
+    transform: scale(1.1);
+}
+
+.random-list, .categories, .how-to-play{
+    width: 75%;
+    margin: 0.5rem 0;
+    border-radius: 30px;
+    color: inherit;
+    box-shadow: 6px 4px rgba(0, 0, 0, 0.5);; 
+}
+
+.categories{
+    background-color: rgb(248, 94, 71);
+}
+
+.random-list{
+    background-color: rgb(140, 217, 140);
+}
+
+.how-to-play{
+    background-color:#fe9f47;
+    margin-bottom: 0;
+}
+
+/* PLAYER SETUP STYLES */
+
+.player-setup-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 2rem;
+    align-content: center;
+    background-color: #55BDED;
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.player-setup-container h3{
+    padding-bottom: 1rem;
+    font-size: clamp(1.5rem, 5vw ,3rem);
+    font-family: 'Pixelify Sans', sans-serif;   
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-input{
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.player-input input{
+    border-radius: 30px;
+    font-size: clamp(1.5rem, 5vw ,3rem);
+    width: clamp(12rem, 25vw, 40rem);
+    text-align: center;
+    border: white solid 2px;
+}
+
+.add-player-button{
+    font-size: clamp(1rem, 4vw, 2rem);
+    border-radius: 30px;
+    padding: 0.5rem;
+    background-color: rgb(140, 217, 140);
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, color 0.3s ease ;
+}
+
+.start-game-button{
+    font-size: clamp(1rem, 3vw, 3rem);
+    border-radius: 30px;
+    padding: 0.5rem;
+    background-color: rgb(140, 217, 140);
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, color 0.3s ease ;
+}
+
+.added-player{
+    display: flex;
+    margin: 2rem 0;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.added-player p{
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+}
+
+
+.remove-player-button{
+    font-size: clamp(0.75rem, 3vw, 2rem);
+    border-radius: 30px;
+    padding: 0.5rem;
+    background-color: rgb(248, 94, 71);
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    transition: transform 0.3s ease, color 0.3s ease ;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+}
+
+.add-player-button:hover, .start-game-button:hover{
+    color: rgb(169, 142, 142);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.remove-player-button:hover{
+    color: rgb(169, 142, 142);
+    cursor: pointer;
+}
+
+.player-alert{
+    display: flex;
+    font-family: "Pixelify Sans";
+    color:rgb(248, 94, 71);
+    background-color: rgb(228, 173, 173);
+    border-radius: 20px;
+    border: 2px solid rgb(68, 51, 51);
+    margin: 1rem 0;
+    padding: 0.5rem;
+}
+
+.player-alert p{
+    font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+
+@media(max-width: 559px){
+    .player-input{
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .player-setup-container{
+        width: 90%;
+    }
+}
+
+
+/* Catergory Section Styles */
+
+.category-heading{
+    font-family: "Pixelify Sans";
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    padding: 0.5rem 0;
+}
+
+.background-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 60%;
+    background-color: #55BDED;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-button{
+    background-color: rgb(140, 217, 140);
+    font-family: 'Pixelify Sans', sans-serif;
+    font-size: clamp(1rem, 2vw, 2.5rem);
+    color: white;
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    border-radius: 50px;
+    margin: 1rem;
+    width: 66%;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);;
+}
+
+.category-button:hover{
+    color: black;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.selected-category-container{
+    display: flex;
+    flex-direction: column;
+    font-family: "Pixelify Sans", sans-serif;
+    padding: 0.5rem;
+}
+
+.selected-category{
+    color: white;
+    padding-left: 0.5rem;
+}
+
+.next-page-button{
+    font-size: clamp(0.75rem, 3vw, 2rem);
+    border-radius: 30px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: rgb(248, 94, 71);
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    transition: transform 0.3s ease, color 0.3s ease ;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+}
+
+.next-page-button:hover{
+    color: rgb(169, 142, 142);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@media(max-width: 1300px){
+    .background-container{
+        width: 75%;
+    }
+}
+
+@media(max-width: 700px){
+    .background-container{
+        width: 90%;
+    }
+}
+
+@media(max-width: 500px){
+    .category-button{
+        width: 80%;
+    }
+}
+
+/* GAMESPACE STYLES */
+
+.gamespace-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #55BDED;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.game-area{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(140, 217, 140);
+    padding: 2rem;
+    border-radius: 20px;
+    width: 75%;
+}
+
+.question-container{
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+    font-size: clamp(0.5rem, 3vw, 1rem);
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.guess-input{
+    font-size: clamp(1.50rem, 3vw, 2rem);
+    border-radius: 20px;
+    border: white 2px solid;
+    text-align: center;
+}
+
+.button-container{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.end-of-game-buttons-container{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.submit-answer-button, .hint-button, .give-up-button, .play-again-button, .return-home-button{
+    font-size: clamp(0.75rem, 2vw, 1.5rem);
+    border-radius: 30px;
+    padding: 0.5rem;
+    color: white;
+    font-family: 'Pixelify Sans', sans-serif;
+    transition: transform 0.3s ease, color 0.3s ease ;
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+    width: 33%;
+    cursor: pointer;
+}
+
+.submit-answer-button{
+    background-color: #fe9f47;
+}
+
+.hint-button{
+    background-color: #55BDED;
+}
+
+.give-up-button{
+    background-color: rgb(248, 94, 71);
+}
+
+.play-again-button, .return-home-button{
+    background-color: #55BDED;
+    margin-top: 1rem;
+}
+
+
+.game-list-container{
+    text-align: center;
+}
+
+.list-item-container{
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 20px;
+    font-size: clamp(1rem, 2vw, 2rem);
+    font-family: "Pixelify Sans", sans-serif;
+    list-style-position: inside;
+    background-color: rgb(248, 94, 71);
+    box-shadow:  6px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hint{
+    color: #55BDED;
+}
+
+.unguessed{
+    color: white;
+}
+
+.scores-and-guesses-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-family: "Kanit";
+    width: 25%;
+}
+
+.player-score{
+    border-radius: 20px;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-name{
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: "Pixelify Sans";
+}
+
+.scores-and-guesses-container h2{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.scores-container{
+    background-color: rgb(248, 94, 71);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 6px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+.incorrect-guesses-container{
+    background-color: #fe9f47;
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 6px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.incorrect-guesses-container ul{
+    list-style: none;
+}
+
+@media(max-width: 1200px){
+    .game-area{
+        width: 65%;
+    }
+
+    .scores-and-guesses-container{
+        width: 35%;
+    }
+}
+
+@media(max-width: 767px){
+    .gamespace-container{
+        flex-direction: column;
+    }
+
+    .game-area{
+        width: 100%;
+    }
+
+    .scores-and-guesses-container{
+        flex-direction: row;
+        width: 100%;
+        gap: 1rem;
+    }
+    .scores-container{
+        width: 50%;
+    }
+
+    .incorrect-guesses-container{
+        width: 50%;
+    }
+}
+
+@media(max-width: 525px){
+    .scores-and-guesses-container{
+        flex-direction: column;
+    }
+
+    .scores-container{
+        width: 100%;
+    }
+
+    .incorrect-guesses-container{
+        width: 100%;
+    }
+}
