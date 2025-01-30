@@ -28,11 +28,11 @@ app.use((req, res, next) => {
   next()
 });
 
-const allowedOrigins = 'http://localhost:3000';
+const allowedOrigins = 'https://top-10-game-frontend.onrender.com';
 
 const corsOptions = {
   origin: allowedOrigins,
-  methods: ['GET', 'POST']
+  methods: ['GET']
 };
 
 app.use(cors(corsOptions));
