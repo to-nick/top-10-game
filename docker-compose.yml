@@ -17,6 +17,9 @@ services:
       - "5010:5010"
     environment:
       - PORT=5010
+      - db_ssl_cert=/Top-10-Server/ca.pem
+    volumes:
+      -../Certs/ca.pem:/Top-10-Server/ca.pem
     depends_on:
       - frontend-app
     env_file:

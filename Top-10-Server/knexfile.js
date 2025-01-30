@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs');
 
 const knexConfig = {
     client: 'mysql2',
@@ -9,8 +10,8 @@ const knexConfig = {
       password: process.env.db_password,
       port: process.env.db_port || 3306,
       ssl: {
-        ca: process.env.db_ssl_cert,
-        rejectUnauthorized: false,
+        ca: fs.readFileSync('/app/ssl/ca.pem'),
+        rejectUnauthorized: true,
       }
     }
 };
