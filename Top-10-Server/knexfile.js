@@ -10,7 +10,7 @@ const knexConfig = {
       password: process.env.db_password,
       port: process.env.db_port || 3306,
       ssl: {
-        ca: fs.readFileSync('/app/ssl/ca.pem'),
+        ca: fs.readFileSync('/Top-10-Server/ca.pem'),
         rejectUnauthorized: true,
       }
     }
