@@ -3,7 +3,7 @@ services:
   frontend-app:
     build:
       context: ./Top-10-Frontend
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
@@ -12,14 +12,14 @@ services:
   backend-app:
     build:
       context: ./Top-10-Server
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "5010:5010"
     environment:
       - PORT=5010
       - db_ssl_cert=/Top-10-Server/ca.pem
     volumes:
-      -../Certs/ca.pem:/Top-10-Server/ca.pem
+      - ../Certs/ca.pem:/Top-10-Server/ca.pem
     depends_on:
       - frontend-app
     env_file:
