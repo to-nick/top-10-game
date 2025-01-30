@@ -44,7 +44,7 @@ import confetti from 'canvas-confetti';
 
                     setGameList(listItems);
                 } else if (!category){
-                const preData = await fetch('http://localhost:5010/lists/random-list');
+                const preData = await fetch(`${backendUrl}/lists/random-list`);
                 const data = await preData.json();
                 
                 setListMetaData({
