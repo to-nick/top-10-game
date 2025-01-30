@@ -19,7 +19,7 @@ services:
       - PORT=5010
       - db_ssl_cert=/Top-10-Server/ca.pem
     volumes:
-      - ../Certs/ca.pem:/Top-10-Server/ca.pem
+      - /Users/nicktorrens/Documents/Grad Cert in Web Development 2024/Portfolio Applications/Certs/ca.pem:/Top-10-Server/ca.pem
     depends_on:
       - frontend-app
     env_file:
