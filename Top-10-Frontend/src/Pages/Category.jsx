@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { CategoryContext } from "../Components/CategoryContext";
 
 export default function Category(){
     const [category, setCategory] = useState('');

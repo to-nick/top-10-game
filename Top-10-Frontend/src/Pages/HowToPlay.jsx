@@ -1,7 +1,10 @@
-
+import { useNavigate } from 'react-router-dom';
 
 export default function HowToPlay (){
 
+const navigate = useNavigate();
+
+const goBack = () => navigate('/')
 
     return(
         <div className="page-container">
@@ -29,6 +32,7 @@ export default function HowToPlay (){
                             <p>If the list cannot be completed, the "Give up" button will reveal the remaining items on the list.</p>
                         </div>
                 </div>
+                <button className="how-to-back-button" onClick={goBack}>Back To Home</button>
             </div>
         </div>
     )
