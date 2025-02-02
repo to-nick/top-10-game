@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.use('/lists', require('./lists/lists'));
+router.use('/contact', require('./contact/contact'))
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

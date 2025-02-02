@@ -10,7 +10,6 @@ const options = require('./knexfile.js');
 const knex = require('knex')(options);
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -28,18 +27,24 @@ app.use((req, res, next) => {
   next()
 });
 
-const allowedOrigins = 'https://top-10-game-frontend.onrender.com';
+
+
+const allowedOrigins = ['https://top-10-game-frontend.onrender.com', 'http://localhost:3000'];
 
 const corsOptions = {
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET']
 };
 
 app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
