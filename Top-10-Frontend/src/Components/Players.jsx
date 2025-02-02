@@ -20,9 +20,8 @@ export default function Players(){
             return;
         }
         navigate('/Game', { state: { players, category } });
-    };
 
-    console.log(category);
+    };
 
     const addPlayer = (e) => {
         e.preventDefault();
@@ -55,10 +54,8 @@ export default function Players(){
             prevPlayersList.filter((player) => player !== playerName)
         );
     };
-    
 
     return (
-        <div className='page-container'>
             <div className='player-setup-container'>
                 <form onSubmit={startGame}>
                     <h3>Enter player Names</h3>
@@ -69,12 +66,11 @@ export default function Players(){
                         <button className="add-player-button" onClick={addPlayer}>Add Player</button>
                     </div>
                     <div className='player-list'>
-                        {players.length > 0 ? players.map((player) => <div className='added-player' key={player}><p>{player}</p><button type='button' className='remove-player-button' onClick={() => removePlayer(player)}>Remove Player</button></div>) : ''}
+                        {players.length > 0 ? players.map((player) => <div className='added-player' key={player}><p>{player}</p><button type='button' className='remove-player-button' onClick={() => removePlayer(player)}>Remove</button></div>) : ''}
                     </div>
-                    {zeroPlayers ? <div className='player-alert'><p>You must add at leaast one player to start the game</p></div> : null}
+                    {zeroPlayers ? <div className='player-alert'><p>Add at least one player to start</p></div> : null}
                     <button type="submit" className='start-game-button'>Start Game!</button>
                 </form>
-            </div>
-        </div>        
+            </div>      
     )
 }

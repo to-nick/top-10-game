@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 import Home from './Pages/Home';
-import Login from './Pages/Login';
-import Register from './Pages/Register';
+import Contact from './Pages/Contact';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Game from './Pages/Game';
 import Category from './Pages/Category';
-import Players from './Pages/Players';
+import PlayersPage from './Pages/PlayersPage';
+import HowToPlay from './Pages/HowToPlay';
 
 
 function App() {
@@ -18,11 +18,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/players" element={<Players />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/players" element={<PlayersPage />} />
           <Route path="/category" element={<Category />} />
           <Route path="/game" element={<Game />} />
+          <Route path="how-to-play" element={<HowToPlay />} />
         </Routes>
         <Footer />
       </BrowserRouter>

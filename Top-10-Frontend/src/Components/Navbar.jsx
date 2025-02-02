@@ -10,10 +10,7 @@ function Navbar(){
             </Link>
             <ul>
                 <li>
-                    <Link to="/register" className='nav-link'>Register</Link>
-                </li>
-                <li>
-                    <Link to="/login" className='nav-link'>Login</Link>
+                    <Link to="/contact-us" className='nav-link'>Contact Us</Link>
                 </li>
             </ul>
         </nav>

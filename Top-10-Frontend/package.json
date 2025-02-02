@@ -14,7 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "client": "react-scripts start",
-    "server": "cd ../Top-10-Server && npm run start",
+    "server": "cd ../Top-10-Server && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
