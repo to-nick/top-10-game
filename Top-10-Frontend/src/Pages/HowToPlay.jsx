@@ -18,7 +18,7 @@ export default function HowToPlay (){
                         </div>
                         <div className="how-to-text">
                             <h3>Scores</h3>
-                            <p> Scores are shown beside each players name. Every correctly guessed item on the list is awarded 1 point.</p>
+                            <p> Scores are shown beside each players name. Every correctly guessed item on the list is awarded 1 point. The player with the most points at the end of the round wins.</p>
                         </div>
                         <div className="how-to-text">
                             <h3>Hints</h3>
