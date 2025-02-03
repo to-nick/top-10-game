@@ -335,6 +335,7 @@ footer p {
     border-radius: 70px;
     border: 2px solid rgb(68, 51, 51);
     padding: 1rem 2rem;
+    justify-content: center;
 }
 
 .player-alert p{
@@ -555,6 +556,17 @@ footer p {
 .play-again-button, .return-home-button{
     background-color: #55BDED;
     margin-top: 1rem;
+}
+
+.gamespace-player-alerts{
+    display: flex;
+    font-family: "Pixelify Sans";
+    color: black;
+    background-color: rgb(228, 173, 173);
+    border-radius: 70px;
+    border: 2px solid rgb(68, 51, 51);
+    padding: 1rem 2rem;
+    justify-content: center;
 }
 
 .game-list-container{

@@ -167,6 +167,8 @@ import confetti from 'canvas-confetti';
             setHintedItems([]);
             setShowAllItems(true);
             setHintsUsed(false);
+            setRepeatGuess(false);
+            setHintsUsed(false);
             
         }
 
@@ -193,6 +195,8 @@ import confetti from 'canvas-confetti';
                         value={playerGuess}
                         onChange={(e) => setPlayerGuess(e.target.value)}
                             />
+                    {repeatGuess ? <h3 className='gamespace-player-alerts'>Item already guessed!</h3> : ''}
+                    {hintsUsed ? <h3 className='gamespace-player-alerts'>Player hints exhuasted</h3> : null}
                     <div className='button-container'>
                         <button 
                             className='submit-answer-button'
@@ -207,9 +211,9 @@ import confetti from 'canvas-confetti';
                             type='button' 
                             onClick={revealList}>Give up!</button>
                     </div>
+                    
                 </form>
-                    {repeatGuess ? <h3>Item already guessed!</h3> : ''}
-                    {hintsUsed ? <h3>Player hints exhuasted</h3> : null}
+                    
                 <div className='game-list-container'>
                     <ol>
                     { gameList ? gameList.map((item) => {
