@@ -102,7 +102,8 @@ import confetti from 'canvas-confetti';
                     .toLowerCase()
                     .split(' ')
                     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(' ');
+                    .join(' ')
+                    .trim();
                 
                 //Handling repeat guesses of the same answer
                 if(incorrectGuesses.includes(modifiedPlayerGuess) || guessedItems.includes(modifiedPlayerGuess)){
