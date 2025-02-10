@@ -42,6 +42,8 @@ import confetti from 'canvas-confetti';
                     .filter((key) => key.startsWith('item'))
                     .map((key) => data[key]);
 
+                    console.log(listItems);
+
                     setGameList(listItems);
                 } else if (!category){
                 const preData = await fetch(`${backendUrl}/lists/random-list`);
@@ -56,6 +58,8 @@ import confetti from 'canvas-confetti';
                 const listItems = Object.keys(data)
                 .filter((key) => key.startsWith('item'))
                 .map((key) => data[key]);
+
+                console.log(listItems);
 
                 setGameList(listItems);
             }
@@ -117,7 +121,7 @@ import confetti from 'canvas-confetti';
                 }
 
                 //Handling correct guesses and score updates
-                if (gameList.includes(modifiedPlayerGuess)){
+                if (gameList.some(gameList => gameList.includes(modifiedPlayerGuess))){
                     setGuessedItems((prevGuessedList) => [...prevGuessedList, modifiedPlayerGuess])
                     setPlayerData((prevData) => {
                         const updatedData = [...prevData]
@@ -141,12 +145,15 @@ import confetti from 'canvas-confetti';
                     return;
                 }
             }
+            
         };
 
         const handleHints = () => {
             const hintItem = gameList.find((item) => {
-                return !guessedItems.includes(item) && !hintedItems.includes(item)
+                const itemVariations = item.split(',').map(variation => variation.trim());
+            return !hintedItems.includes(item) && !guessedItems.some(guess => itemVariations.includes(guess))
             });
+            console.log(hintItem);
             
             if (playerData[currentPlayer].hints === 0 || showAllItems === true){
                 setHintsUsed(true);
@@ -183,6 +190,8 @@ import confetti from 'canvas-confetti';
             setHintsUsed(false);
         }
 
+        
+
     return(
         <div className='gamespace-container'>
             <div className='game-area'>
@@ -218,18 +227,28 @@ import confetti from 'canvas-confetti';
                 <div className='game-list-container'>
                     <ol>
                     { gameList ? gameList.map((item) => {
-                        if(guessedItems.includes(item)){
-                            return <div className='list-item-container guessed'><li key={item}>{item}</li></div>
+                        //For rendering correct answers
+                        const itemVariations = item.split(',').map(variant => variant.trim());
+                        if(guessedItems.some(guess => {
+                            return itemVariations.some(variation => variation.split(',').map(string => string.trim()).includes(guess));
+                        })){
+                            return <div className='list-item-container guessed'><li key={item}>{item.split(',')[0]}</li></div>
+                        //For rendeing hints
                         } else if (hintedItems.includes(item)) {
                             const hint = item
+                                .split(',')[0]
                                 .split(' ')
                                 .map((word) => word.charAt(0) + "_".repeat(word.length - 1))
                                 .join(' '); 
+                                console.log(hint);
                             return <div className='list-item-container hint'><li key={item}>{hint}</li></div>;
+                        //For rendering all answers upon "give Up"
                         } else if(showAllItems === true){
-                            return <div className='list-item-container'><li key={item}>{item}</li></div>
+                            return <div className='list-item-container'><li key={item}>{item.split(',')[0]}</li></div>
+                        //For rendering blank _ in unguessed items
                         } else {
                             const gameListItem = item
+                                .split(',')[0]
                                 .split(' ')
                                 .map((word) => "_".repeat(word.length))
                                 .join(' ')

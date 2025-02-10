@@ -3,9 +3,6 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-console.log("Email Username:", process.env.email_username);
-console.log("Email Password:", process.env.email_password ? "Loaded" : "Not Loaded");
-
 
 router.get('/send-email', function (req, res, next){
   res.status(200).json({
