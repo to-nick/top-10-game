@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Page to add a category to game list
 export default function Category(){
     const [category, setCategory] = useState('');
 
@@ -10,6 +11,7 @@ export default function Category(){
         setCategory(selectedCategory);
     }
 
+    // next page function to carry the category state to the next page with useNavigate
     const nextPage = () => navigate('/players', { state: { category } });
 
     return(

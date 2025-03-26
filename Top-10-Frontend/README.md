@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+The Top Ten Game
+_____________________________________________________________________________________________________________
+PROJECT OVERVIEW
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive, turn based, quiz game where players try to guess the "top 10" list of a defined category.
+Players can choose from a specified category of top ten lists or be given a random category.
+Players score one point by succesfully guessing an item within the list. The player with the hightest 
+score at the end of the game is the winner.
+______________________________________________________________________________________________________________
+FEATURES
 
-## Available Scripts
+-Multiplayer or single player: Users can compete against their friends on the same device or play solo.
+-Dynamic quiz questions: Fetched from a MySQL database with an API.
+-Real time and dynamic display of scores: Players can see their scores in real time.
+-Personalisation: Players can enter their names to have them displayed next to their scores.
+-Responsive design for a large number of screen sizes.
+______________________________________________________________________________________________________________
+INSTALLATION
 
-In the project directory, you can run:
+1. Clone the repository:
+    git clone https://github.com/to-nick/top-10-game.git
 
-### `npm start`
+2. Navigate to the project directory:
+    cd top-10-game
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Install the dependacies from both directories:
+    cd Top-10-Frontend
+    npm install
+    cd ..
+    cd Top-10-Server
+    npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. Create a database:
+    Install MySQL and MySQL workbench and create a database using the the query from "InitialQuery.sql" in the backend directory.
 
-### `npm test`
+4. Set up the environmental variables:
+    View the "ENVexample" file in the server dierctory and create your own enviromental variables.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. Run the app:
+    - Ensure you are in the frontend directory "cd Top-10-Frontend"
+    - Then "npm run dev" for development which should run both the front and backend with concurrently.
 
-### `npm run build`
+________________________________________________________________________________________________________________
+TECH STACK
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Frontend
+    -HTML5, CSS3, Javascript
+    -React (For dynamic UI components and visualisations)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Backend
+    -Node.js
+    -Express.js
+    -Knex (For connecting the server to the database)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Database
+    -MySQL (For storing quiz questions to be fetched by an API)
 
-### `npm run eject`
+_________________________________________________________________________________________________________________
+API DOCUMENTATION
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## TOP 10 LIST ACCESS
+- GET /lists/random-list     // For randomly generated lists
+- GET /lists/category        // For generating the category list
+- GET /lists/category-list   // For generating a list from a defined category
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## CONTACT
+- POST /contact/send-email   // For using the contact form to generate an email

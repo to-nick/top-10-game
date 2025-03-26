@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-
+//declaring a set variable to prevent duplicate entries
 const usedLists = new Set();
 
+//ROute to access a random list from the database
 router.get('/random-list', async function(req, res, next){
     console.log("Random list route called");
    try{
+        //Ensuring that lists aren't repeated untill all lists have been played.
         const countResult = await req.db
             .from('top_10_lists')
             .count('id as count').first();
@@ -42,8 +44,8 @@ router.get('/random-list', async function(req, res, next){
    }
 })
 
+//Finding all available list categories within the database
 router.get('/category', async function (req, res, next){
-
     try{
         const allCategories = await req.db
             .from('top_10_lists')
@@ -58,12 +60,14 @@ router.get('/category', async function (req, res, next){
     }
 })
 
+//Route to access a list that is defined by a category
 router.get('/category-list', async function (req, res, next){
     const { category } = req.query;
     console.log(category);
+    
     try{
         console.log(usedLists);
-
+        //Ensuring that lists aren't repeated untill all lists have been played.
         const countResult = await req.db
             .from('top_10_lists')
             .where('category', 'like', category)

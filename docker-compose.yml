@@ -1,3 +1,5 @@
+# Docker compose file for root directory
+
 version: '3'
 services:
   frontend-app:

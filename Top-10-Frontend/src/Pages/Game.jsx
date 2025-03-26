@@ -1,6 +1,6 @@
 import GameSpace from "../Components/GameSpace";
 
-
+//Page containing the Gamespace component
 export default function Game(){
 
     return(

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import logo from '../Styles/logo/Top-10-logo.png';
 
-
+// NAVBAR COMPONENT
 function Navbar(){
     return (
         <nav className="nav">

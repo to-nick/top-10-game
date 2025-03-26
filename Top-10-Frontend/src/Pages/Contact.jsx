@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//Contact page
 function Contact(){
     const [emailResult, setEmailResult] = useState(null);
     const [isSending, setIsSending] = useState(false);
@@ -10,6 +11,7 @@ function Contact(){
 
         const backendUrl = process.env.REACT_APP_backend_host;
 
+        //Setting up an object to send to the backend 
         const formData = {
             name: e.target.name.value,
             email: e.target.email.value,

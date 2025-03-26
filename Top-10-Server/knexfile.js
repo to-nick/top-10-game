@@ -1,6 +1,9 @@
+//Knewfile to use Knex to query the backend
+
 require('dotenv').config();
 const fs = require('fs');
 
+//Database credential object with EV's
 const knexConfig = {
     client: 'mysql2',
     connection: {
@@ -12,6 +15,7 @@ const knexConfig = {
     }
 };
 
+//Knex function to test database connection
 const knex = require('knex')(knexConfig);
 knex.raw('SELECT 1')
   .then(() => {

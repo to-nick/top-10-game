@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
+//How to play page
 export default function HowToPlay (){
 
 const navigate = useNavigate();

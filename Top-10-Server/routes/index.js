@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+//Setting additional routes for the backend
 router.use('/lists', require('./lists/lists'));
 router.use('/contact', require('./contact/contact'))
 

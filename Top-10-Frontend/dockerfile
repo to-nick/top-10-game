@@ -1,22 +1,22 @@
-# Use an official Node.js runtime to build the app
+# Official Node.js runtime to build the app
 FROM node:20-alpine as build
 
-# Set the working directory inside the container
+# Setting the working directory inside the container
 WORKDIR /frontend-app
 
-# Copy package.json and package-lock.json to the working directory
+# Copying package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies
+# Installing dependencies
 RUN npm install
 
-# Copy the rest of the React code to the container
+# Copying the rest of the React code to the container
 COPY . .
 
-# Build the React app for production
+# Building the React app for production
 RUN npm run build
 
-# Use a lightweight web server to serve the build files
+# Using a lightweight web server to serve the build files
 FROM node:20-alpine
 WORKDIR /frontend-app
 COPY --from=build /frontend-app/build ./build

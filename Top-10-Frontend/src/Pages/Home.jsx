@@ -1,5 +1,6 @@
 import HomeLanding from '../Components/HomeLanding';
 
+//page containing the HomeLanding component
 function Home(){
 
     return (

@@ -4,6 +4,7 @@ import confetti from 'canvas-confetti';
 
     export default function GameSpace(){
 
+        //Declaring state variables for use in the gamespace
         const navigate = useNavigate();        
         const location = useLocation();
 
@@ -21,23 +22,26 @@ import confetti from 'canvas-confetti';
         
         const [showAllItems, setShowAllItems] = useState(false);
 
-
         const [currentPlayer, setCurrentPlayer] = useState(Math.floor(Math.random() * players.length));
 
+        //Function to fetch the list to be used in the game
         async function fetchList(){
             const backendUrl = process.env.REACT_APP_backend_host
             try{
+                //Determining if the generated list needs to be random or catergory specific
                 if (category){
                     console.log(category);
                     const preData = await fetch(`${backendUrl}/lists/category-list?category=${category}`);
                     const data = await preData.json();
 
+                    //Seperating the list metadata and the list items themselves
                     setListMetaData({
                         id: data.id,
                         category: data.category,
                         title: data.title
                     });
 
+                    //listItems are the items which the user will be guessing at in the gamespace
                     const listItems = Object.keys(data)
                     .filter((key) => key.startsWith('item'))
                     .map((key) => data[key]);
@@ -45,6 +49,7 @@ import confetti from 'canvas-confetti';
                     console.log(listItems);
 
                     setGameList(listItems);
+                //Setting conditions if a list is not bound by a category
                 } else if (!category){
                 const preData = await fetch(`${backendUrl}/lists/random-list`);
                 const data = await preData.json();
@@ -72,7 +77,10 @@ import confetti from 'canvas-confetti';
             fetchList();
         }, []);
 
+        //Functionality for the confetti cannon effect when a user correctly guesses a list item
         const confettiCannon = () => {
+
+            //Setting the location of the conffetti effect to always be in the middle of the game list container regardless of screen size
             const confettiTarget = document.querySelector(".game-list-container");
             const targetRect = confettiTarget.getBoundingClientRect();
             
@@ -99,9 +107,9 @@ import confetti from 'canvas-confetti';
         //Handling each player guess
         const handleGuess = (e) => {
             e.preventDefault();
-
+            //Handling edge case of a guess without any input
             if(playerGuess !== ''){
-                //Setting each player guess to the first letter of each word as a capital for comparison
+                //Setting each player guess to the first letter of each word as a capital for comparison to formatiing of the database
                 const modifiedPlayerGuess = playerGuess
                     .toLowerCase()
                     .split(' ')
@@ -147,17 +155,19 @@ import confetti from 'canvas-confetti';
             }
             
         };
-
+        //Handling the hints within the gamespace
         const handleHints = () => {
+            //Because the users can also guess some synonyms of the correct answers, the function must handle variatons of the correct guesses as well
             const hintItem = gameList.find((item) => {
                 const itemVariations = item.split(',').map(variation => variation.trim());
             return !hintedItems.includes(item) && !guessedItems.some(guess => itemVariations.includes(guess))
             });
             console.log(hintItem);
-            
+            //Setting state to declare that a player has used all of their hints for this game
             if (playerData[currentPlayer].hints === 0 || showAllItems === true){
                 setHintsUsed(true);
                 return;
+            //Adding the hinted item to the hintedItems array and updating the player hint count
             } else if (hintItem){
                 setHintedItems((prevHintedItems) => [...prevHintedItems, hintItem])
                 setPlayerData((prevData) => {
@@ -171,6 +181,7 @@ import confetti from 'canvas-confetti';
             };
         };
 
+        //Function for showing all list items if players choose to "Give Up"
         const revealList = () => {
             setHintedItems([]);
             setShowAllItems(true);
@@ -180,6 +191,7 @@ import confetti from 'canvas-confetti';
             
         }
 
+        //Resetting the gamespace for players to play again
         const handlePlayAgain = ()=>{
             fetchList();
             setGuessedItems([]);
@@ -198,6 +210,7 @@ import confetti from 'canvas-confetti';
                 <div className='question-container'>
                     <h2>Top 10 {listMetaData ? listMetaData.title : 'Loading...'}</h2>
                 </div>
+                {/* Input container for player guesses */}
                 <form className='input-container' onSubmit={handleGuess}>
                     <input 
                         className='guess-input'
@@ -205,8 +218,10 @@ import confetti from 'canvas-confetti';
                         value={playerGuess}
                         onChange={(e) => setPlayerGuess(e.target.value)}
                             />
+                    {/* Setting error messages for items guessed or player hints exhausted */}
                     {repeatGuess ? <h3 className='gamespace-player-alerts'>Item already guessed!</h3> : ''}
                     {hintsUsed ? <h3 className='gamespace-player-alerts'>Player hints exhuasted</h3> : null}
+                    {/* action buttons for players */}
                     <div className='button-container'>
                         <button 
                             className='submit-answer-button'
@@ -221,7 +236,6 @@ import confetti from 'canvas-confetti';
                             type='button' 
                             onClick={revealList}>Give up!</button>
                     </div>
-                    
                 </form>
                     
                 <div className='game-list-container'>
@@ -257,13 +271,16 @@ import confetti from 'canvas-confetti';
                     }) : <p>Loading....</p>
                     }
                     </ol>
+                    {/* For signaling the end of the game once the last item is guessed */}
                     {guessedItems.length === 10 || showAllItems === true ? <div className='end-of-game-buttons-container'><button className='play-again-button' onClick={handlePlayAgain}>Play again</button><button className='return-home-button' onClick={()=>{navigate('/')}}>Return Home</button></div> : ""}
                 </div>
             </div>
+            {/* Section for displaying player scores and incorrect player guesses */}
             <div className='scores-and-guesses-container'>
                 <div className='scores-container'>
                     <h2>Scores</h2>
                         {playerData.map(({player, score, hints}, index) => 
+                        // styling to signify the current player
                         <div className='player-score' key={player} style={{fontWeight: index === currentPlayer ? 'bold' : 'normal', color: index === currentPlayer ? 'white' : 'black'}}>
                            <p className='player-name'>{player}</p> 
                            <div className='score-data'>
@@ -272,6 +289,7 @@ import confetti from 'canvas-confetti';
                             </div>
                         </div>)}
                 </div>
+                {/* Incorrect guess list rendering */}
                 <div className='incorrect-guesses-container'>
                         <h2>Incorrect Guesses:</h2>
                         <ul>

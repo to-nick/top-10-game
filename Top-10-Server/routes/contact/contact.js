@@ -11,7 +11,7 @@ router.get('/send-email', function (req, res, next){
   })
 })
 
-
+//setting up nodemailer to authorise email account
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
