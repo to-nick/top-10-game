@@ -107,11 +107,8 @@ router.get('/category-list', async function (req, res, next){
 })
 
 //Ping Route for continuous uptime
-router.get('/ping', async function (req, res, next){
-    res.status(200).json({
-      error: false,
-      message: "ping received"
-    })
+router.head('/ping', async function (req, res, next){
+    res.sendStatus(200)
   })
 
 module.exports = router;
